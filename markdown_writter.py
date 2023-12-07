@@ -1,4 +1,5 @@
 class MarkdownWritter:
+    last_documented_test_name:str = ""
     cariage_return:str
     data:str = ""
 

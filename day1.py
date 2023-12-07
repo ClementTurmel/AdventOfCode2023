@@ -1,23 +1,8 @@
 import pytest
-from markdown_writter import *
+from markdown_writter import MarkdownWritter, doc_module, doc
 import re
 #python -m pytest day1.py
 
-
-
-@pytest.fixture(scope="module")
-def doc_module(request):
-    doc = MarkdownWritter()
-    yield doc
-    doc.dump_in_file("documentation/day1.md")
-
-@pytest.fixture(scope="function")
-def doc(doc_module, request):
-    if request.function.__name__ != doc_module.last_documented_test_name:
-        doc_module.log(f"#### {request.function.__name__}")
-        doc_module.last_documented_test_name = request.function.__name__
-
-    yield doc_module
 
 def test_day_1_part_1_explanation(doc):
     doc.log("""

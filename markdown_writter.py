@@ -1,3 +1,5 @@
+import pytest
+
 class MarkdownWritter:
     last_documented_test_name:str = ""
     cariage_return:str
@@ -19,3 +21,19 @@ class MarkdownWritter:
     @staticmethod
     def img(image_url, alt="todo"):
         return f'<img src="{image_url}" alt="{alt}" width="20px" height="20px">'
+    
+
+
+@pytest.fixture(scope="module")
+def doc_module(request):
+    doc = MarkdownWritter()
+    yield doc
+    doc.dump_in_file(f"documentation/{request.module.__name__}.md")
+
+@pytest.fixture(scope="function")
+def doc(doc_module, request):
+    if request.function.__name__ != doc_module.last_documented_test_name:
+        doc_module.log(f"#### {request.function.__name__}")
+        doc_module.last_documented_test_name = request.function.__name__
+
+    yield doc_module

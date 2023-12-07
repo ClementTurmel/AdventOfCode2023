@@ -45,5 +45,5 @@ given lines ```1abc2
 
 #### test_calibrate_with_file_input
 
-given input day 1 file ```[day_1_input.txt](../day_1_input.txt)```, calibrate return ```55834```
+given input day 1 file [day_1_input.txt](../day_1_input.txt), calibrate return ```55834```
 

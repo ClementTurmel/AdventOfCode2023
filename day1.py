@@ -67,7 +67,7 @@ def test_calibrate_with_file_input(doc):
         text_input = file_input.read()
     
     result = calibrate(text_input)
-    doc.log(f"given input day 1 file ```[day_1_input.txt](../day_1_input.txt)```, calibrate return ```{result}```")
+    doc.log(f"given input day 1 file [day_1_input.txt](../day_1_input.txt), calibrate return ```{result}```")
     assert result == 55834
 
 
